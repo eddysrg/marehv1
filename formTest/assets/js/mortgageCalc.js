@@ -83,4 +83,4 @@ function calcularCredito(creditoSolicitado, plazo) {
   income.textContent = formatter.format(mensualidad * 1.5);
 }
 
-calcularCredito(2000000, 20);
+//calcularCredito(2000000, 20);

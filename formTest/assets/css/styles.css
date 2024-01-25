@@ -77,9 +77,12 @@ a {
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
+img,
+video,
+svg {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -287,4 +290,28 @@ input[type="radio"] {
   .grid-first__contain p {
     font-size: var(--smaller-font-size);
   }
+}
+
+/* Estilos de la cotizacion o precalificacion */
+.credit-amount {
+  background-color: #daebff;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  background-image: url("../../assets/img/coin.png");
+  background-size: 7rem;
+  background-repeat: no-repeat;
+  background-position: 85% 50%;
+}
+
+.credit-amount__title {
+  margin: 0;
+  font-size: var(--small-font-size);
+  margin-bottom: var(--mb-0-8);
+  color: rgb(173, 173, 173);
+}
+
+.credit-amount__price {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: var(--font-medium);
 }

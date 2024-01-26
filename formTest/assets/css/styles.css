@@ -232,6 +232,16 @@ input[type="radio"] {
   background-color: rgb(55, 55, 167);
 }
 
+button:disabled {
+  background-color: rgb(167, 167, 255);
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: rgb(167, 167, 255);
+  cursor: not-allowed;
+}
+
 .button--previous {
   background-color: unset;
   color: rgb(131, 131, 131);
@@ -244,10 +254,9 @@ input[type="radio"] {
   color: white;
 }
 
-.btn-initial,
+.btn-next:first-child,
 .btn-2,
-.btn-3,
-.btn-submit {
+.btn-3 {
   width: 100%;
   margin-bottom: var(--mb-12);
 }

@@ -31,12 +31,12 @@
         </div>
 
         <main class="main">
-            <section class="form first-section">
+            <section class="form first-section" style="display: none;">
                 <div class="container form__container">
                     <h2 class="form__title">¿Qué tipo de crédito necesitas?</h2>
                     <p class="form__text">Elige el crédito que mejor se adapte a tus necesidades</p>
 
-                    <form action="" class="form__formulario">
+                    <form action="" class="form__formulario" id="form-radio">
                         <div class="form__input-section">
                             <input class="form__input" type="radio" name="credit-radio" id="adq">
 
@@ -70,15 +70,16 @@
                                 Construcción
                             </label>
                         </div>
+
+                        <button class="form__button btn-next button" disabled>Next</button>
+
                     </form>
 
-                    <a class="form__link" href="">Forgot password?</a>
 
-                    <button class="form__button btn-initial button">Next</button>
                 </div>
             </section>
 
-            <section class="form second-section" style="display: none;">
+            <section class="form second-section">
                 <div class="container form__container">
 
                     <h2 class="form__title">Datos del inmueble e ingresos</h2>
@@ -99,12 +100,12 @@
                             <label class="form__label" for="ingreso">Monto del crédito</label>
                             <input class="form__input" type="number" name="ingreso" id="ingreso">
                         </div>
+
+                        <button class="form__button btn-next button" disabled>Next</button>
+                        <button class="form__button btn-2 button button--previous">Previous</button>
                     </form>
 
-                    <a class="form__link" href="">Forgot password?</a>
 
-                    <button class="form__button btn-initial button">Next</button>
-                    <button class="form__button btn-2 button button--previous">Previous</button>
                 </div>
             </section>
 
@@ -130,13 +131,10 @@
                             <label class="form__label" for="email">Correo electronico</label>
                             <input class="form__input" type="email" name="email" id="email">
                         </div>
+
+                        <button class="form__button btn-submit button">Submit</button>
+                        <button class="form__button btn-3 button button--previous">Previous</button>
                     </form>
-
-                    <a class="form__link" href="">Forgot password?</a>
-
-                    <button class="form__button btn-submit button">Submit</button>
-                    <button class="form__button btn-3 button button--previous">Previous</button>
-
                 </div>
             </section>
         </main>
@@ -145,7 +143,7 @@
 
 
 
-    <script type="module" src="./assets/js/app.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
 
 </html>

@@ -168,6 +168,17 @@ input[type="radio"] {
   cursor: pointer;
 }
 
+.aviso {
+  font-size: var(--smaller-font-size);
+  margin: 0;
+  color: red;
+}
+
+.empty-input {
+  border: 2px solid red;
+  background-color: rgb(253, 214, 214);
+}
+
 .radio {
   width: 16px;
   height: 16px;

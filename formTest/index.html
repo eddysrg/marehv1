@@ -31,14 +31,14 @@
         </div>
 
         <main class="main">
-            <section class="form first-section" style="display: none;">
+            <section class="form first-section">
                 <div class="container form__container">
                     <h2 class="form__title">¿Qué tipo de crédito necesitas?</h2>
                     <p class="form__text">Elige el crédito que mejor se adapte a tus necesidades</p>
 
                     <form action="" class="form__formulario" id="form-radio">
                         <div class="form__input-section">
-                            <input class="form__input" type="radio" name="credit-radio" id="adq">
+                            <input value="Adquisicion" class="form__input" type="radio" name="credit-radio" id="adq">
 
                             <label class="form__label rl" for="adq">
                                 <span class="radio"></span>
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="form__input-section">
-                            <input class="form__input" type="radio" name="credit-radio" id="mh">
+                            <input value="Mejora" class="form__input" type="radio" name="credit-radio" id="mh">
 
                             <label class="form__label rl" for="mh">
                                 <span class="radio"></span>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form__input-section">
-                            <input class="form__input" type="radio" name="credit-radio" id="liquidez">
+                            <input value="Liquidez" class="form__input" type="radio" name="credit-radio" id="liquidez">
                             <label class="form__label rl" for="liquidez">
                                 <span class="radio"></span>
                                 Liquidez
@@ -63,7 +63,8 @@
                         </div>
 
                         <div class="form__input-section">
-                            <input class="form__input" type="radio" name="credit-radio" id="construccion">
+                            <input value="Construccion" class="form__input" type="radio" name="credit-radio"
+                                id="construccion">
 
                             <label class="form__label rl" for="construccion">
                                 <span class="radio"></span>
@@ -79,7 +80,7 @@
                 </div>
             </section>
 
-            <section class="form second-section">
+            <section class="form second-section" style="display: none;">
                 <div class="container form__container">
 
                     <h2 class="form__title">Datos del inmueble e ingresos</h2>

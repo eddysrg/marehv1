@@ -1,8 +1,71 @@
-//Codigo para que los botones avancen y retrocedan las secciones
+//CONSTANTES
+//-- SELECTORES EN EL FORMULARIO --
+const formularios = document.querySelectorAll(".form__formulario");
+const formFirstSection = formularios[0];
+const formSecondSection = formularios[1];
+const formThirdSection = formularios[2];
+const optionAdquisicion = formFirstSection.querySelector("#adq");
+const optionMejora = formFirstSection.querySelector("#mh");
+const optionLiquidez = formFirstSection.querySelector("#liquidez");
+const optionConstruccion = formFirstSection.querySelector("#construccion");
+const valorInmueble = formSecondSection.querySelector("#v-inm");
+const valorIngreso = formSecondSection.querySelector("#ingreso");
+const valorCredito = formSecondSection.querySelector("#credito");
+const nombreCompleto = formThirdSection.querySelector("#full-name");
+const telefono = formThirdSection.querySelector("#phone-number");
+const email = formThirdSection.querySelector("#email");
+const buttons = document.querySelectorAll(".button");
 
-function submitButton() {
-  console.log("Enviando informacion xd");
-}
+//-- SELECTORES PARA EL CALCULO DE HIPOTECA --
+const porcentajeSeguroDanios = 0.3524;
+const factorPagoMillar = {
+  5: 21.54,
+  10: 13.69,
+  15: 1.43,
+  20: 10.39,
+};
+const tasaAnual = {
+  5: 0.106,
+  10: 0.1085,
+  15: 0.111,
+  20: 0.111,
+};
+const detallesCredito = {
+  pagoMensual: "",
+  tasaMensual: "",
+  pagoIntereses: "",
+  pagoCapital: "",
+  montoCredito: "",
+  comisionAdmin: 250,
+  mensualidad: "",
+  seguroVida: "",
+  seguroDamage: "",
+};
+const creditAmount = document.querySelector(".credit-amount__price");
+const product = document.getElementById("product");
+const term = document.getElementById("term");
+const monthlypayment = document.getElementById("monthlypayment");
+const rate = document.getElementById("rate");
+const income = document.getElementById("income");
+
+//EVENTOS
+//-- EVENTOS EN EL FORMULARIO --
+valorInmueble.addEventListener("blur", validarInput);
+valorIngreso.addEventListener("blur", validarInput);
+valorCredito.addEventListener("blur", validarInput);
+nombreCompleto.addEventListener("blur", validarInput);
+telefono.addEventListener("blur", validarInput);
+email.addEventListener("blur", validarInput);
+formFirstSection.addEventListener("change", validarInputRadio);
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    validarButton(event, button);
+  });
+});
+
+//FUNCIONES
+//CODIGO PARA AVANZAR Y RETROCEDER EL FORMULARIO
 
 function handleNextClick(section) {
   const nextElement = section.nextElementSibling;
@@ -22,42 +85,13 @@ function handlePreviousClick(section) {
   }
 }
 
-//Codigo para validar los inputs
+function validarInputRadio(e) {
+  const actualForm = e.target.parentElement.parentElement;
 
-const radioInputs = document.querySelectorAll('.form__input[type="radio"]');
-radioInputs.forEach((radioInput) =>
-  radioInput.addEventListener("change", validarInput)
-);
-
-const formularios = document.querySelectorAll(".form__formulario");
-const formFirstSection = formularios[0];
-const formSecondSection = formularios[1];
-const formThirdSection = formularios[2];
-
-const valorInmueble = formSecondSection.querySelector("#v-inm");
-const valorIngreso = formSecondSection.querySelector("#ingreso");
-const valorCredito = formSecondSection.querySelector("#credito");
-
-const nombreCompleto = formThirdSection.querySelector("#full-name");
-const telefono = formThirdSection.querySelector("#phone-number");
-const email = formThirdSection.querySelector("#email");
-
-valorInmueble.addEventListener("blur", validarInput);
-valorIngreso.addEventListener("blur", validarInput);
-valorCredito.addEventListener("blur", validarInput);
-
-nombreCompleto.addEventListener("blur", validarInput);
-telefono.addEventListener("blur", validarInput);
-email.addEventListener("blur", validarInput);
-
-const buttons = document.querySelectorAll(".button");
-console.log(buttons);
-
-buttons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    validarButton(event, button);
-  });
-});
+  if (e.target) {
+    actualForm.querySelector(".button").disabled = false;
+  }
+}
 
 function validarButton(e, boton) {
   e.preventDefault();
@@ -82,23 +116,13 @@ function validarForm(formulario, seccionActual) {
   const formButton = formulario.querySelector(".button");
 
   if (!formButton.classList.contains(".button--previous") && noInputsEmpty) {
-    console.log(formButton);
+    formButton.disabled = false;
   }
 }
 
 function validarInput(event) {
   const currentForm = event.target.parentElement.parentElement;
   const currentSection = currentForm.parentElement.parentElement;
-
-  if (currentForm.id === "form-radio") {
-    currentForm.querySelector(".btn-next").disabled = false;
-    currentForm.addEventListener("click", (e) => {
-      e.preventDefault();
-      handleNextClick(currentSection);
-    });
-
-    return;
-  }
 
   if (event.target.value === "") {
     imprimirAviso("Favor de llenar el campo", event.target.parentElement);
@@ -127,42 +151,6 @@ function eliminarAviso(elemento) {
 
   elemento.querySelector(".form__input").classList.remove("empty-input");
 }
-
-//Codigo para hacer el calculo de los valores llenados en el form
-const porcentajeSeguroDanios = 0.3524;
-
-const factorPagoMillar = {
-  5: 21.54,
-  10: 13.69,
-  15: 1.43,
-  20: 10.39,
-};
-
-const tasaAnual = {
-  5: 0.106,
-  10: 0.1085,
-  15: 0.111,
-  20: 0.111,
-};
-
-const detallesCredito = {
-  pagoMensual: "",
-  tasaMensual: "",
-  pagoIntereses: "",
-  pagoCapital: "",
-  montoCredito: "",
-  comisionAdmin: 250,
-  mensualidad: "",
-  seguroVida: "",
-  seguroDamage: "",
-};
-
-const creditAmount = document.querySelector(".credit-amount__price");
-const product = document.getElementById("product");
-const term = document.getElementById("term");
-const monthlypayment = document.getElementById("monthlypayment");
-const rate = document.getElementById("rate");
-const income = document.getElementById("income");
 
 function calcularMensualidad(creditoMonto, plazo) {
   detallesCredito.pagoMensual = factorPagoMillar[plazo] * (creditoMonto / 1000);

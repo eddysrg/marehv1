@@ -58,6 +58,23 @@ telefono.addEventListener("blur", validarInput);
 email.addEventListener("blur", validarInput);
 formFirstSection.addEventListener("change", validarInputRadio);
 
+valorInmueble.addEventListener("input", (e) => {
+  formatoMoneda(e.target.value);
+
+  if (parseFloat(e.target.value) < 800000) {
+    imprimirAviso(
+      "El valor de la vivienda debe ser mayor a $800,000.00",
+      e.target.parentElement
+    );
+  } else {
+    eliminarAviso(e.target.parentElement);
+  }
+});
+
+function formatoMoneda(valor) {
+  console.log(valor);
+}
+
 buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
     validarButton(event, button);

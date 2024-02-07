@@ -48,9 +48,11 @@ const monthlypayment = document.getElementById("monthlypayment");
 const rate = document.getElementById("rate");
 const income = document.getElementById("income");
 
+let montValue = "";
+
 //EVENTOS
 //-- EVENTOS EN EL FORMULARIO --
-valorInmueble.addEventListener("blur", validarInput);
+//valorInmueble.addEventListener("blur", validarInput);
 valorIngreso.addEventListener("blur", validarInput);
 valorCredito.addEventListener("blur", validarInput);
 nombreCompleto.addEventListener("blur", validarInput);
@@ -58,22 +60,9 @@ telefono.addEventListener("blur", validarInput);
 email.addEventListener("blur", validarInput);
 formFirstSection.addEventListener("change", validarInputRadio);
 
-valorInmueble.addEventListener("input", (e) => {
-  formatoMoneda(e.target.value);
+valorInmueble.addEventListener("focus", validationInputCurrencyFocus);
 
-  if (parseFloat(e.target.value) < 800000) {
-    imprimirAviso(
-      "El valor de la vivienda debe ser mayor a $800,000.00",
-      e.target.parentElement
-    );
-  } else {
-    eliminarAviso(e.target.parentElement);
-  }
-});
-
-function formatoMoneda(valor) {
-  console.log(valor);
-}
+valorInmueble.addEventListener("blur", validationInputCurrency);
 
 buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
@@ -82,7 +71,7 @@ buttons.forEach((button) => {
 });
 
 //FUNCIONES
-//CODIGO PARA AVANZAR Y RETROCEDER EL FORMULARIO
+//FUNCIONES PARA AVANZAR Y RETROCEDER EL FORMULARIO
 
 function handleNextClick(section) {
   const nextElement = section.nextElementSibling;
@@ -101,6 +90,7 @@ function handlePreviousClick(section) {
     previousElement.style.display = "block";
   }
 }
+//FUNCIONES PARA VALIDACIONES EN EL FORMULARIO
 
 function validarInputRadio(e) {
   const actualForm = e.target.parentElement.parentElement;
@@ -149,6 +139,27 @@ function validarInput(event) {
   }
 }
 
+function validationInputCurrency(event) {
+  if (event.target.value !== "") {
+    currencyFormat(event.target.value, event);
+  }
+
+  validarInput(event);
+}
+
+function validationInputCurrencyFocus(event) {
+  if (event.target.value !== "") {
+    event.target.value = "";
+    event.target.type = "number";
+
+    event.target.value = montValue[1]
+      ? parseFloat(montValue.join("."))
+      : parseInt(montValue[0]);
+  }
+}
+
+//FUNCIONES PARA AGREGAR/ELIMINAR MENSAJES Y FORMATEAR DATOS
+
 function imprimirAviso(mensaje, elemento) {
   if (!elemento.lastElementChild.classList.contains("aviso")) {
     const parrafo = document.createElement("p");
@@ -168,6 +179,26 @@ function eliminarAviso(elemento) {
 
   elemento.querySelector(".form__input").classList.remove("empty-input");
 }
+
+function currencyFormat(currencyNumber, event) {
+  const regexCommas = /(\d)(?=(\d{3})+(?!\d))/g;
+
+  const removeChar = currencyNumber.replace(/[^0-9\.]/g, "");
+
+  const arrNumbers = removeChar.split(".");
+
+  montValue = [...arrNumbers];
+
+  arrNumbers[0] = arrNumbers[0].replace(regexCommas, "$1,");
+
+  const finalNumber = arrNumbers[1] ? arrNumbers.join(".") : arrNumbers[0];
+
+  event.target.type = currencyNumber === "" ? "number" : "text";
+
+  event.target.value = `$${finalNumber}`;
+}
+
+//FUNCIONES PARA EL CALCULO DE LA HIPOTECA
 
 function calcularMensualidad(creditoMonto, plazo) {
   detallesCredito.pagoMensual = factorPagoMillar[plazo] * (creditoMonto / 1000);

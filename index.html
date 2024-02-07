@@ -31,7 +31,7 @@
         </div>
 
         <main class="main">
-            <section class="form first-section" style="display: none;">
+            <section class="form first-section">
                 <div class="container form__container">
                     <h2 class="form__title">¿Qué tipo de crédito necesitas?</h2>
                     <p class="form__text">Elige el crédito que mejor se adapte a tus necesidades</p>
@@ -80,7 +80,7 @@
                 </div>
             </section>
 
-            <section class="form second-section">
+            <section class="form second-section" style="display: none;">
                 <div class="container form__container">
 
                     <h2 class="form__title">Datos del inmueble e ingresos</h2>
@@ -89,17 +89,19 @@
                     <form action="" class="form__formulario">
                         <div class="form__input-section">
                             <label class="form__label" for="v-inm">Valor del inmueble</label>
-                            <input class="form__input" type="number" name="v-inmueble" id="v-inm">
+                            <input class="form__input" type="number" name="v-inmueble" id="v-inm"
+                                placeholder="$3,000,000">
                         </div>
 
                         <div class="form__input-section">
                             <label class="form__label" for="ingreso">Ingreso neto mensual</label>
-                            <input class="form__input" type="number" name="ingreso" id="ingreso">
+                            <input class="form__input" type="number" name="ingreso" id="ingreso" placeholder="$50,000">
                         </div>
 
                         <div class="form__input-section">
                             <label class="form__label" for="credito">Monto del crédito</label>
-                            <input class="form__input" type="number" name="credito" id="credito">
+                            <input class="form__input" type="number" name="credito" id="credito"
+                                placeholder="$2,700,000">
                         </div>
 
                         <button class="form__button btn-next button" disabled>Next</button>
@@ -120,17 +122,20 @@
                     <form action="" class="form__formulario">
                         <div class="form__input-section">
                             <label class="form__label" for="full-name">Nombre completo</label>
-                            <input class="form__input" type="text" name="full-name" id="full-name">
+                            <input class="form__input" type="text" name="full-name" id="full-name"
+                                placeholder="Coloca tu nombre completo">
                         </div>
 
                         <div class="form__input-section">
                             <label class="form__label" for="phone-number">Número celular</label>
-                            <input class="form__input" type="number" name="phone-number" id="phone-number">
+                            <input class="form__input" type="tel" name="phone-number" id="phone-number" maxlength="10"
+                                placeholder="5689002838">
                         </div>
 
                         <div class="form__input-section">
                             <label class="form__label" for="email">Correo electronico</label>
-                            <input class="form__input" type="email" name="email" id="email">
+                            <input class="form__input" type="email" name="email" id="email"
+                                placeholder="micorreo@dominio.com">
                         </div>
 
                         <button type="submit" class="form__button btn-submit button" disabled>Submit</button>

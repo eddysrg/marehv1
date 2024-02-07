@@ -52,17 +52,17 @@ let montValue = "";
 
 //EVENTOS
 //-- EVENTOS EN EL FORMULARIO --
-//valorInmueble.addEventListener("blur", validarInput);
-valorIngreso.addEventListener("blur", validarInput);
-valorCredito.addEventListener("blur", validarInput);
-nombreCompleto.addEventListener("blur", validarInput);
-telefono.addEventListener("blur", validarInput);
-email.addEventListener("blur", validarInput);
 formFirstSection.addEventListener("change", validarInputRadio);
 
 valorInmueble.addEventListener("focus", validationInputCurrencyFocus);
-
 valorInmueble.addEventListener("blur", validationInputCurrency);
+valorIngreso.addEventListener("focus", validationInputCurrencyFocus);
+valorIngreso.addEventListener("blur", validationInputCurrency);
+valorCredito.addEventListener("focus", validationInputCurrencyFocus);
+valorCredito.addEventListener("blur", validationInputCurrency);
+nombreCompleto.addEventListener("blur", validarInput);
+telefono.addEventListener("blur", validationInputPhone);
+email.addEventListener("blur", validationInputEmail);
 
 buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
@@ -158,9 +158,48 @@ function validationInputCurrencyFocus(event) {
   }
 }
 
+function validationInputPhone(event) {
+  const regexNumbers = /[0-9]{10}/g;
+
+  if (event.target.value !== "") {
+    if (regexNumbers.test(event.target.value)) {
+      validarInput(event);
+    } else {
+      imprimirAviso(
+        "Coloque un numero a 10 digitos valido",
+        event.target.parentElement
+      );
+    }
+    return;
+  }
+
+  validarInput(event);
+}
+
+function validationInputEmail(event) {
+  if (event.target.value !== "") {
+    eliminarAviso(event.target.parentElement);
+
+    const regexEmail = /^(?:[0-9a-zA-z.]+@[a-zA-Z]{2,}[/.][a-zA-Z]{2,4}|)$/g;
+
+    if (!regexEmail.test(event.target.value)) {
+      imprimirAviso("Ingrese un correo valido", event.target.parentElement);
+    } else {
+      eliminarAviso(event.target.parentElement);
+      validarInput(event);
+    }
+
+    return;
+  }
+
+  validarInput(event);
+}
+
 //FUNCIONES PARA AGREGAR/ELIMINAR MENSAJES Y FORMATEAR DATOS
 
 function imprimirAviso(mensaje, elemento) {
+  eliminarAviso(elemento);
+
   if (!elemento.lastElementChild.classList.contains("aviso")) {
     const parrafo = document.createElement("p");
     parrafo.textContent = mensaje;

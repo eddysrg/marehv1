@@ -220,7 +220,7 @@ the website, in dark theme
 }
 
 .nav__logo-icon {
-  font-size: 1.15rem;
+  width: 5.15rem;
   color: var(--first-color);
 }
 
@@ -311,7 +311,7 @@ the website, in dark theme
 }
 
 .home__img {
-  width: 200px;
+  width: 256px;
   justify-self: center;
 }
 
@@ -935,7 +935,7 @@ the website, in dark theme
     align-items: center;
   }
   .home__img {
-    width: 280px;
+    width: 420px;
     order: 1;
   }
   .home__social {
@@ -973,7 +973,7 @@ the website, in dark theme
     padding: 13rem 0 5rem;
   }
   .home__img {
-    width: 350px;
+    width: 500px;
   }
   .home__description {
     padding-right: 7rem;

@@ -512,6 +512,11 @@ the website, in dark theme
   transition: 0.3s;
 }
 
+.product__img--first {
+  width: 200px;
+  min-height: 116px;
+}
+
 .product__title,
 .product__price {
   font-size: var(--small-font-size);

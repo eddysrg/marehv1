@@ -512,11 +512,6 @@ the website, in dark theme
   transition: 0.3s;
 }
 
-.product__img--first {
-  width: 200px;
-  min-height: 116px;
-}
-
 .product__title,
 .product__price {
   font-size: var(--small-font-size);
@@ -549,7 +544,7 @@ the website, in dark theme
   background-color: var(--first-color-lighten);
   border-radius: 50%;
   position: absolute;
-  top: 18%;
+  /* top: 18%; */
   left: 5%;
 }
 

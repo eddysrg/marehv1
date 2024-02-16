@@ -7,11 +7,11 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --hue: 152;
-  --first-color: hsl(var(--hue), 24%, 32%);
-  --first-color-alt: hsl(var(--hue), 24%, 28%);
-  --first-color-light: hsl(var(--hue), 24%, 66%);
-  --first-color-lighten: hsl(var(--hue), 24%, 92%);
+  --hue: 204;
+  --first-color: hsl(var(--hue), 61%, 54%);
+  --first-color-alt: hsl(var(--hue), 61%, 48%);
+  --first-color-light: hsl(var(--hue), 61%, 66%);
+  --first-color-lighten: hsl(var(--hue), 64%, 92%);
   --title-color: hsl(var(--hue), 4%, 15%);
   --text-color: hsl(var(--hue), 4%, 35%);
   --text-color-light: hsl(var(--hue), 4%, 55%);
@@ -394,6 +394,7 @@ the website, in dark theme
 .button--flex {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   column-gap: 0.5rem;
 }
 
@@ -512,26 +513,24 @@ the website, in dark theme
   transition: 0.3s;
 }
 
-.product__title,
+/* .product__title,
 .product__price {
-  font-size: var(--small-font-size);
+  font-size: var(--smaller-font-size);
   font-weight: var(--font-semi-bold);
   color: var(--title-color);
-}
+} */
 
 .product__title {
   margin-bottom: 0.25rem;
 }
 
 .product__button {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  margin-top: 20px;
   background-color: var(--first-color);
   color: #fff;
-  padding: 0.25rem;
   border-radius: 0.35rem;
-  font-size: 1.15rem;
+  font-size: var(--small-font-size);
+  padding: 0.7rem;
 }
 
 .product__button:hover {

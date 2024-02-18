@@ -7,7 +7,7 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --hue: 204;
+  --hue: 215;
   --first-color: hsl(var(--hue), 61%, 54%);
   --first-color-alt: hsl(var(--hue), 61%, 48%);
   --first-color-light: hsl(var(--hue), 61%, 66%);
@@ -140,6 +140,10 @@ Color changes in some parts of
 the website, in dark theme 
 ==========*/
 
+.dark-theme .logo {
+  content: url("../img/logomareh_blanco.svg");
+}
+
 .dark-theme .steps__bg,
 .dark-theme .questions {
   background-color: var(--first-color-dark);
@@ -219,7 +223,8 @@ the website, in dark theme
   transition: 0.3s;
 }
 
-.nav__logo-icon {
+.nav__logo-icon,
+.footer__logo-icon {
   width: 5.15rem;
   color: var(--first-color);
 }
@@ -735,10 +740,10 @@ the website, in dark theme
   transition: 0.3s;
 }
 
-.footer__logo-icon {
+/* .footer__logo-icon {
   font-size: 1.15rem;
   color: var(--first-color);
-}
+} */
 
 .footer__logo:hover {
   color: var(--first-color);
@@ -925,6 +930,7 @@ the website, in dark theme
   .contact__container,
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
+    align-items: center;
   }
 
   .home {

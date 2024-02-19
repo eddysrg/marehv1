@@ -69,6 +69,7 @@ const toggleItem = (item) => {
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll("section[id]");
+console.log(sections);
 
 function scrollActive() {
   const scrollY = window.pageYOffset;

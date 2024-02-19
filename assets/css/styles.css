@@ -83,6 +83,7 @@ body {
   margin: var(--header-height) 0 0 0;
   background-color: var(--body-color);
   color: var(--text-color);
+  line-height: 1.5;
   transition: 0.4s; /*For animation dark mode*/
 }
 

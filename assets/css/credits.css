@@ -83,6 +83,7 @@ body {
   margin: var(--header-height) 0 0 0;
   background-color: var(--body-color);
   color: var(--text-color);
+  line-height: 1.5;
   transition: 0.4s; /*For animation dark mode*/
 }
 
@@ -159,6 +160,14 @@ the website, in dark theme
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
+
+.title {
+  font-size: var(--big-font-size);
+  line-height: 140%;
+  margin-bottom: var(--mb-1);
+  text-align: center;
+}
+
 .section {
   padding: 5.5rem 0 1rem;
 }
@@ -307,23 +316,12 @@ the website, in dark theme
 
 /*=============== HOME ===============*/
 .home {
-  padding: 3.5rem 0 2rem;
-}
-
-.home__container {
-  position: relative;
-  row-gap: 2rem;
+  padding: 3.5rem 0 1rem;
 }
 
 .home__img {
   width: 256px;
   justify-self: center;
-}
-
-.home__title {
-  font-size: var(--big-font-size);
-  line-height: 140%;
-  margin-bottom: var(--mb-1);
 }
 
 .home__description {
@@ -413,17 +411,27 @@ the website, in dark theme
 }
 
 /*=============== ABOUT ===============*/
+
+.credits {
+  display: grid;
+  row-gap: 4rem;
+}
+
 .about__container {
   row-gap: 2rem;
 }
 
 .about__img {
-  width: 280px;
-  justify-self: center;
+  width: 200px;
+  position: relative;
 }
 
 .about__title {
   margin-bottom: var(--mb-1);
+}
+
+.about__subtitle {
+  margin-bottom: 2rem;
 }
 
 .about__description {
@@ -440,12 +448,28 @@ the website, in dark theme
   display: inline-flex;
   column-gap: 0.5rem;
   font-size: var(--small-font-size);
+  align-items: center;
 }
 
 .about__details-icon {
   font-size: 1rem;
   color: var(--first-color);
   margin-top: 0.15rem;
+}
+
+.credit__image-container {
+  margin-inline: auto;
+  position: relative;
+}
+
+.credit__circle {
+  width: 130px;
+  height: 130px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /*=============== STEPS ===============*/
@@ -908,6 +932,10 @@ the website, in dark theme
     margin: 0;
   }
 
+  .credits-title {
+    margin-top: 160px;
+  }
+
   .nav {
     height: calc(var(--header-height) + 1.5rem);
     column-gap: 3rem;
@@ -985,7 +1013,12 @@ the website, in dark theme
   }
 
   .about__img {
-    width: 380px;
+    width: 320px;
+  }
+
+  .credit__circle {
+    width: 200px;
+    height: 200px;
   }
 
   .steps__container {

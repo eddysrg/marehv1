@@ -1039,7 +1039,6 @@ the website, in dark theme
   }
   .footer__container {
     grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
-    align-items: flex-start;
   }
   .footer__copy {
     margin: 7rem 0 2rem;

@@ -1,41 +1,67 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+/*=============== VARIABLES CSS ===============*/
 :root {
-  --body-font: "Poppins", sans-serif;
-  --big-font-size: 3.2rem;
-  --h1-font-size: 2.4rem;
-  --h2-font-size: 2rem;
-  --h3-font-size: 1.6rem;
-  --normal-font-size: 1.5rem;
-  --small-font-size: 1.3rem;
-  --smaller-font-size: 1.2rem;
+  --header-height: 3.5rem; /*56px*/
 
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --hue: 215;
+  --first-color: hsl(var(--hue), 61%, 54%);
+  --first-color-alt: hsl(var(--hue), 61%, 48%);
+  --first-color-light: hsl(var(--hue), 61%, 66%);
+  --first-color-lighten: hsl(var(--hue), 64%, 92%);
+  --title-color: hsl(var(--hue), 4%, 15%);
+  --text-color: hsl(var(--hue), 4%, 35%);
+  --text-color-light: hsl(var(--hue), 4%, 55%);
+  --body-color: hsl(var(--hue), 0%, 100%);
+  --container-color: #fff;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
   --font-medium: 500;
   --font-semi-bold: 600;
 
-  --mb-0-8: 0.8rem;
-  --mb-12: 1.2rem;
-  --mb-16: 1.6rem;
-  --mb-24: 2.4rem;
-  --mb-32: 3.2rem;
-  --mb-40: 4rem;
+  /*========== Margenes Bottom ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
 }
 
 /* Responsive typography */
 @media screen and (min-width: 968px) {
   :root {
-    --big-font-size: 5.6rem;
-    --h1-font-size: 3.6rem;
-    --h2-font-size: 2.4rem;
-    --h3-font-size: 2rem;
-    --normal-font-size: 1.6rem;
-    --small-font-size: 1.4rem;
-    --smaller-font-size: 1.3rem;
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
 
 html {
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
   box-sizing: border-box;
 }
 
@@ -48,6 +74,7 @@ html {
 body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
+  color: var(--text-color);
 }
 
 h1,
@@ -107,6 +134,27 @@ input[type="radio"] {
   text-align: center;
 }
 
+.section__title,
+.section__title-center {
+  font-size: var(--h2-font-size);
+  margin-bottom: var(--mb-2);
+  line-height: 140%;
+}
+
+.section__title-center,
+.section__subtitle-center {
+  text-align: center;
+}
+
+.home__title,
+.subtitle {
+  color: var(--title-color);
+}
+
+.subtitle {
+  font-size: var(--h2-font-size);
+}
+
 .grid-first__contain {
   display: none;
 }
@@ -117,6 +165,21 @@ input[type="radio"] {
   font-size: var(--h2-font-size);
   font-weight: var(--font-medium);
   color: rgb(14, 14, 141);
+}
+
+.home__img {
+  width: 150px;
+  margin-inline: auto;
+  margin-top: 2rem;
+}
+
+.home-section {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.home__title {
+  font-size: var(--h1-font-size);
 }
 
 .form {
@@ -228,7 +291,7 @@ input[type="radio"] {
   margin-bottom: var(--mb-24);
 }
 
-.button {
+/* .button {
   padding: 2rem 2rem;
   background-color: rgb(72, 72, 219);
   color: white;
@@ -237,10 +300,44 @@ input[type="radio"] {
   border-radius: 0.6rem;
   transition: background-color 0.5s;
   cursor: pointer;
+} */
+
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 1rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: var(--font-medium);
+  transition: 0.3s;
 }
 
 .button:hover {
-  background-color: rgb(55, 55, 167);
+  background-color: var(--first-color-alt);
+}
+
+.button__icon {
+  transition: 0.3s;
+}
+
+.button:hover .button__icon {
+  transform: translateX(0.25rem);
+}
+
+.button--flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+}
+
+.button--link {
+  color: var(--first-color);
+  font-weight: var(--font-medium);
+}
+
+.button--link:hover .button__icon {
+  transform: translateX(0.25rem);
 }
 
 button:disabled {
